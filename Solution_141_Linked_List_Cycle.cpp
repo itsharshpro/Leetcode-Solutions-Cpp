@@ -21,15 +21,13 @@ struct ListNode {
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        if(head==NULL) return false;
-        ListNode* temp = head;
-        while(1){
-            if(temp==NULL) return false;
-            else if(temp->val==INT_MIN){
-                return true;
-            }
-            temp->val = INT_MIN;
-            temp = temp->next;
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast!=NULL && fast->next!=NULL){
+            slow = slow->next;
+            fast = fast->next->next;
+
+            if(slow==fast) return true;
         }
         return false;
     }
