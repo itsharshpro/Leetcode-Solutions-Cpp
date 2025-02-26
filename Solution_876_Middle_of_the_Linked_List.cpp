@@ -26,18 +26,13 @@ struct ListNode {
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
-        if(head==NULL) return NULL;
-        ListNode* temp = head;
-        int length = 1;
-        while(temp->next != NULL){
-            length++;
-            temp = temp->next;
+        if(head==NULL || head->next==NULL) return head;
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast!=NULL && fast->next!=NULL){
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        int mid = length/2;
-        temp = head;
-        while(mid--){
-            temp = temp->next;
-        }
-        return temp;
+        return slow;
     }
 };
