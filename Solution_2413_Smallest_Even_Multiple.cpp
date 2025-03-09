@@ -1,0 +1,12 @@
+#include<vector>
+#include<iostream>
+#include<algorithm>
+
+using namespace std;
+
+class Solution {
+    public:
+    int smallestEvenMultiple(int n) {
+        return (n%2==0) ? n : n*2;
+    }
+};
